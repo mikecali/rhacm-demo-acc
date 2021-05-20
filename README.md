@@ -12,6 +12,6 @@ The demo is created specifically for ACC Navigate project.
     Notice that this will create an  application called ‘mariadb-app’. 
     This deployment will create the following resources:
     
-    1x Subscription resource associated with it.
-    1x managed cluster that runs the application.
-    1x Pod that runs the load itself — The MariaDB server.
+    - 1x Subscription resource associated with it.
+    - 1x managed cluster that runs the application.
+    - 1x Pod that runs the load itself — The MariaDB server.
