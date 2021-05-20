@@ -11,7 +11,7 @@ metadata:
   namespace: mariadb
 spec:
   type: Git
-  pathname: https://gitlab.com/michael.kot/rhacm-demo.git
+  pathname: https://github.com/mikecali/rhacm-demo-acc.git
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
@@ -24,7 +24,7 @@ spec:
       status: "True"
   clusterSelector:
     matchLabels:
-      env: dev
+      env: dev-cluster
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
@@ -40,7 +40,7 @@ spec:
   placement:
     placementRef:
       kind: PlacementRule
-      name: dev-clusters
+      name: dev-cluster
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
