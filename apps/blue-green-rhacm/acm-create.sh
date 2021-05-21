@@ -15,7 +15,7 @@ metadata:
     app: blue-green
 spec:
   type: GitHub
-  pathname: https://github.com/waynedovey/blue-green-rhacm.git
+  pathname: https://github.com/mikecali/rhacm-demo-acc.git
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
@@ -31,7 +31,7 @@ spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      environment: dev
+      env: dev-cluster
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
