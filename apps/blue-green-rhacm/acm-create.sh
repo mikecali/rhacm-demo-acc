@@ -20,7 +20,7 @@ spec:
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: blue-green-dev-clusters
+  name: dev-cluster
   namespace: blue-green
   labels:
     app: blue-green  
