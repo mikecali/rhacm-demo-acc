@@ -60,12 +60,11 @@ metadata:
   labels:
     app: blue-green
   annotations:
-      apps.open-cluster-management.io/github-path: resources/blue-green
+      apps.open-cluster-management.io/github-path: apps/resources/blue-green
 spec:
   channel: blue-green/blue-green
   placement:
     placementRef:
       kind: PlacementRule
       name: dev-cluster
-      apiGroup: apps.open-cluster-management.io     
 EOF
