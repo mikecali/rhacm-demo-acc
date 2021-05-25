@@ -34,7 +34,7 @@ metadata:
   labels:
     app: mariadb-app
   annotations:
-    apps.open-cluster-management.io/github-path: apps/mariadb-resources
+    apps.open-cluster-management.io/github-path: apps/blue-green-rhacm/resources/blue-green
 spec:
   channel: mariadb/mariadb-app
   placement:

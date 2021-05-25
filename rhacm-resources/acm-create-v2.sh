@@ -31,7 +31,7 @@ spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      env: dev-cluster
+      env: prod-cluster
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
@@ -60,11 +60,11 @@ metadata:
   labels:
     app: blue-green
   annotations:
-      apps.open-cluster-management.io/github-path: apps/mariadb-resources/blue-green
+      apps.open-cluster-management.io/github-path: apps/blue-green-v2/blue-green
 spec:
   channel: blue-green/blue-green
   placement:
     placementRef:
       kind: PlacementRule
-      name: dev-cluster
+      name: prod-cluster
 EOF
