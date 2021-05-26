@@ -21,7 +21,7 @@ spec:
         severity: medium
         namespaceSelector:
           exclude: ["kube-*", "openshift-*"]
-          include: ["*"]
+          include: ["memory-test"]
         object-templates:
           - complianceType: musthave
             objectDefinition:
