@@ -60,7 +60,7 @@ metadata:
   labels:
     app: blue-green
   annotations:
-      apps.open-cluster-management.io/github-path: apps/blue-green-v2/blue-green
+      apps.open-cluster-management.io/github-path: apps/blue-green-rhacm/resources/blue-green-v2
 spec:
   channel: blue-green/blue-green
   placement:

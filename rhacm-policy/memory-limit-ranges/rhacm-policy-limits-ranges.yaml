@@ -1,0 +1,65 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-grc-memory-limit-ranges
+  namespace: default
+  annotations:
+    policy.open-cluster-management.io/standards: NIST-CSF
+    policy.open-cluster-management.io/categories: PR.IP Information Protection Processes and Procedures
+    policy.open-cluster-management.io/controls: PR.IP-1 Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-grc-memory-limit-ranges-container-mem-limit-range
+      spec:
+        remediationAction: inform # will be overridden by remediationAction in parent policy
+        severity: medium
+        namespaceSelector:
+          exclude: ["kube-*", "openshift-*"]
+          include: ["*"]
+        object-templates:
+          - complianceType: musthave
+            objectDefinition:
+              apiVersion: v1
+              kind: LimitRange # limit memory usage
+              metadata:
+                name: container-mem-limit-range
+              spec:
+                limits:
+                - default:
+                    memory: 512Mi
+                  defaultRequest:
+                    memory: 256Mi
+                  type: Container
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-grc-memory-limit-ranges
+  namespace: default
+placementRef:
+  name: placement-policy-grc-memory-limit-ranges
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-grc-memory-limit-ranges
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-grc-memory-limit-ranges
+  namespace: default
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: name, operator: In, values: ["local-cluster"]}

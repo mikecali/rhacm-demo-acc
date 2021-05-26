@@ -60,7 +60,7 @@ metadata:
   labels:
     app: blue-green
   annotations:
-      apps.open-cluster-management.io/github-path: apps/mariadb-resources/blue-green
+      apps.open-cluster-management.io/github-path: apps/blue-green-rhacm
 spec:
   channel: blue-green/blue-green
   placement:

@@ -22,3 +22,12 @@ The demo is created specifically for ACC Navigate project.
    
    oc apply -f rhacm-policy/role-policy/role-policy.yml
    oc apply -f rhacm-policy/role-binding/role-binding-policy.yml
+
+2. To demonstrate RHACM policy to enforce resource limits to a selected namespace, do the following.
+   
+   oc apply -f rhacm-policy/memory-limits-ranges/rhacm-policy-limits-ranges.yaml
+
+   This will enable a policy that will check all namespaces for violations excluding namespaces that starts with kube-* and openshift-*.
+
+
+   
